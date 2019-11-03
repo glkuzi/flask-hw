@@ -1,0 +1,12 @@
+FROM python:3.6.8-slim
+#RUN apt-get update
+#RUN apt-get install -y redis-server
+#RUN apt-get install -y python3-pip
+WORKDIR app
+COPY . /app
+#RUN sudo apt-get install redis-server
+#RUN apk add --no-cache redis
+RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
+EXPOSE 5000
+#EXPOSE 6379
+CMD ["python3", "run_app.py"]
